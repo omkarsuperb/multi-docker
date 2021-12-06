@@ -11,7 +11,7 @@ phases:
 
 
 
-  prebuild:
+  pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
@@ -25,7 +25,7 @@ phases:
       - docker build -t omkargujar/multi-server ./server
       - docker build -t omkargujar/multi-worker ./worker
 
-  postbuild:
+  post_build:
     commands:
       - docker push omkargujar/multi-client
       - docker push omkargujar/multi-nginx
