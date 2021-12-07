@@ -29,7 +29,7 @@ phases:
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker/multi-docker/multi-client:latest
+      - docker push multi-docker/multi-client:latest
       - #docker push omkargujar/multi-client
       - #docker push omkargujar/multi-nginx
       - #docker push omkargujar/multi-server
