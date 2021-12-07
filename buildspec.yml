@@ -21,15 +21,21 @@ phases:
       - docker build -t omkargujar/react-test -f ./client/Dockerfile.dev ./client
       - docker run -e CI=true omkargujar/react-test npm test
       - docker build -t multi-docker/multi-client ./client
-      - docker tag multi-docker/multi-client:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:latest
-      - #docker build -t multi-docker/multi-nginx ./nginx
-      - #docker build -t multi-docker/multi-server ./server
-      - #docker build -t multi-docker/multi-worker ./worker
+      - docker tag multi-docker/multi-client:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:client
+      - docker build -t multi-docker/multi-nginx ./nginx
+      - docker tag multi-docker/multi-ngninx:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:nginx
+      - docker build -t multi-docker/multi-server ./server
+      - docker tag multi-docker/multi-server:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:server
+      - docker build -t multi-docker/multi-worker ./worker
+      - docker tag multi-docker/multi-worker:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:worker
 
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:latest
+      - docker push 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:client
+      - docker push 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:nginx
+      - docker push 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:server
+      - docker push 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:worker
       - #docker push omkargujar/multi-client
       - #docker push omkargujar/multi-nginx
       - #docker push omkargujar/multi-server
