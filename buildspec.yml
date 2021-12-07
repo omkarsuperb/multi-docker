@@ -21,7 +21,7 @@ phases:
       - docker build -t omkargujar/react-test -f ./client/Dockerfile.dev ./client
       - docker run -e CI=true omkargujar/react-test npm test
       - docker build -t multi-docker/multi-client ./client
-      - docker tag multi-docker:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:latest
+      - docker tag multi-docker/multi-client:latest 154729512881.dkr.ecr.ap-south-1.amazonaws.com/multi-docker:latest
       - #docker build -t multi-docker/multi-nginx ./nginx
       - #docker build -t multi-docker/multi-server ./server
       - #docker build -t multi-docker/multi-worker ./worker
