@@ -18,8 +18,8 @@ phases:
 
   build:
     commands:
-      - docker build -t omkargujar/react-test -f ./client/Dockerfile.dev ./client
-      - docker run -e CI=true omkargujar/react-test npm test
+      #- docker build -t omkargujar/react-test -f ./client/Dockerfile.dev ./client
+      #- docker run -e CI=true omkargujar/react-test npm test
       - docker build -t omkargujar/multi-client ./client
       - docker build -t omkargujar/multi-nginx ./nginx
       - docker build -t omkargujar/multi-server ./server
